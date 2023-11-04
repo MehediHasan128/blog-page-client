@@ -4,6 +4,7 @@ import { Avatar } from "@mui/material";
 import { FiLogOut } from "react-icons/fi";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
 
@@ -32,10 +33,23 @@ const Navbar = () => {
   const handelLogoutUser = () =>{
     userLogout()
     .then(result =>{
-      console.log(result);
+      if (result) {
+        Swal.fire({
+          icon: "success",
+          title: "Successfully logout",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     })
     .catch(err =>{
-      console.log(err);
+      if (err) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${err.message}`,
+        });
+      }
     })
   }
 
