@@ -1,5 +1,6 @@
 import axios from "axios";
 import moment from "moment/moment";
+import Swal from "sweetalert2";
 
 
 const AddBlog = () => {
@@ -20,7 +21,14 @@ const AddBlog = () => {
 
         axios.post('http://localhost:5000/blog', blog)
         .then(res => {
-            console.log(res);
+            if(res.data.acknowledged){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Blog Added',
+                    showConfirmButton: false,
+                    timer: 1000
+                  })
+            }
         })
         .catch(err =>{
             console.log(err);
