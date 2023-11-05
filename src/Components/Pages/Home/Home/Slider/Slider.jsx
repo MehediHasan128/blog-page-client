@@ -2,7 +2,6 @@ import slider1 from '../../../../../assets/Slider/slider1.jpg';
 import slider2 from '../../../../../assets/Slider/slider2.jpg';
 import slider3 from '../../../../../assets/Slider/slider3.jpg';
 import slider4 from '../../../../../assets/Slider/slider4.jpg';
-// import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 const Slider = () => {
     return (
@@ -43,7 +42,7 @@ const Slider = () => {
         <div className='flex justify-center items-center h-full'>
             <div className='text-center space-y-4 w-[80%]'>
                 <h1 className="text-xl lg:text-6xl">Travel Destinations: Hidden Gems</h1>
-                <p className="text-sm lg:text-2xl text-gray-400">Uncover the world's hidden travel gems, places off the beaten path that offer unique experiences. Get ready to embark on unforgettable adventures!</p>
+                <p className="text-sm lg:text-2xl text-gray-400">Uncover the worlds hidden travel gems, places off the beaten path that offer unique experiences. Get ready to embark on unforgettable adventures!</p>
             </div>
         </div>
     </div>
