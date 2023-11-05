@@ -2,8 +2,21 @@
 
 const AddBlog = () => {
 
+    const handelAddBlogToDB = e =>{
+        e.preventDefault()
+        const form = e.target;
+        const title = form.title.value;
+        const image = form.imageUrl.value;
+        const category = form.category.value;
+        const shortDescription = form.shortDescription.value;
+        const longDescription = form.longDescription.value;
+
+        const blog = {title, image, category, shortDescription, longDescription}
+        console.log(blog);
+    }
+
     return (
-        <div className="flex justify-center items-center min-h-screen container mx-auto">
+        <div className="flex justify-center items-center min-h-screen">
             <div className="w-full">
                 <div className="text-center space-y-5">
                     <h1 className="text-4xl font-semibold">Weclome to Blog Page</h1>
@@ -11,7 +24,7 @@ const AddBlog = () => {
                     <div className="bg-slate-700 w-32 h-1 mx-auto"></div>
                 </div>
                 <div className="w-[70%] mx-auto mt-20">
-                    <form className="px-5">
+                    <form onSubmit={handelAddBlogToDB} className="px-5">
                         <div className="flex gap-8">
                             <div className="w-full">
                                 <label className="text-xl font-medium">Title</label>
@@ -23,7 +36,7 @@ const AddBlog = () => {
                             </div>
                         </div>
                         <div className="my-3">
-                            <select className="block w-full px-5 py-3 border-2 rounded-md mt-2" name="">
+                            <select className="block w-full px-5 py-3 border-2 rounded-md mt-2" name="category">
                                 <option value="">---Seclect Category---</option>
                                 <option value="Travel">Travel</option>
                                 <option value="Food and Cooking">Food and Cooking</option>
