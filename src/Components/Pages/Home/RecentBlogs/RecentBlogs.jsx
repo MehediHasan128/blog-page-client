@@ -38,7 +38,7 @@ const RecentBlogs = ({ blog }) => {
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
-        <img src={image} alt="Shoes" />
+        <img className="brightness-75" src={image} alt="Shoes" />
       </figure>
       {like ? (
         <AiFillHeart
@@ -57,7 +57,7 @@ const RecentBlogs = ({ blog }) => {
         />
       )}
       <div className="card-body">
-        <h2 className="card-title">{title}</h2>
+        <h1 className="text-xl font-semibold">{title}</h1>
         <div className="bg-slate-600 w-fit px-3 text-white my-3 font-medium rounded-full">
           <p>{category}</p>
         </div>

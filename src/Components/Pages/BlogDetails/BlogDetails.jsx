@@ -83,7 +83,7 @@ const BlogDetails = () => {
           {
             (writerEmail === userEmail)?
             <Link to={`/updateBlog/${_id}`} className="px-5 py-3 bg-slate-600 rounded-lg text-white font-semibold">
-            <button>Update Blog</button>
+            <button onClick={`/updateBlog/${_id}`}>Update Blog</button>
             </Link> :
             <></>
           }
