@@ -14,7 +14,7 @@ const Home = () => {
           <h1 className="text-4xl text-center mb-10 font-bold">Recent Blogs</h1>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 w-[90%] lg:w-[70%] mx-auto">
             {
-              recentBlogs.map(blog => <RecentBlogs key={blog._id} blog={blog} />)
+              recentBlogs.slice(0,6).map(blog => <RecentBlogs key={blog._id} blog={blog} />)
             }
         </div>
         </div>

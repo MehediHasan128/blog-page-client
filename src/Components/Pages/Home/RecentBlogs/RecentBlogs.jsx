@@ -4,15 +4,16 @@ import { useContext, useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const RecentBlogs = ({ blog }) => {
 
   const {user} = useContext(AuthContext);
   const userEmail = user?.email;
 
-  const { _id, title, image, category, shortDescription, longDescription } = blog;
+  const { _id, title, image, category, shortDescription, longDescription, writerName, writerEmail, writerProfile } = blog;
 
-  const wishListBlogs = {title, image, category, shortDescription, longDescription, userEmail, blogId: _id};
+  const wishListBlogs = {title, image, category, shortDescription, longDescription, writerName, writerEmail, writerProfile, userEmail, blogId: _id};
 
   const [like, setLike] = useState(false);
 
@@ -62,9 +63,11 @@ const RecentBlogs = ({ blog }) => {
         </div>
         <p>{shortDescription}</p>
         <div className="card-actions">
-          <button className="bg-slate-700 w-full py-2 rounded-lg text-white">
+          <Link className="bg-slate-700 w-full py-2 rounded-lg text-white text-center" to={`/blogs/${_id}`}>
+          <button>
             Details
           </button>
+          </Link>
         </div>
       </div>
     </div>

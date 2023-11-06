@@ -15,7 +15,7 @@ const DisplayWishListBlogs = ({blog, handelRemoveWishList}) => {
       <div className="card-body">
         <div className="flex items-center justify-between">
         <h2 className="card-title">{title}</h2>
-        <AiFillHeart onClick={() => handelRemoveWishList(_id)} className="text-3xl text-red-700" />
+        <AiFillHeart onClick={() => handelRemoveWishList(_id)} className="text-3xl text-red-700 cursor-pointer" />
         </div>
         <p>{shortDescription}</p>
         <div className="card-actions justify-between">

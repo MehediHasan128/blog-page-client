@@ -1,9 +1,14 @@
 import axios from "axios";
 import moment from "moment/moment";
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const AddBlog = () => {
+
+    const {user} = useContext(AuthContext);
+
 
     const handelAddBlogToDB = e =>{
         e.preventDefault()
@@ -13,10 +18,13 @@ const AddBlog = () => {
         const category = form.category.value;
         const shortDescription = form.shortDescription.value;
         const longDescription = form.longDescription.value;
+        const writerName = user?.displayName;
+        const writerEmail = user?.email;
+        const writerProfile = user?.photoURL;
         const date = moment().format('M-D-YYYY')
         const time = moment().format('h:mm:ss a')
 
-        const blog = {title, image, category, shortDescription, longDescription, time, date}
+        const blog = {title, image, category, shortDescription, longDescription, writerName, writerEmail, writerProfile, time, date}
 
 
         axios.post('http://localhost:5000/blog', blog)

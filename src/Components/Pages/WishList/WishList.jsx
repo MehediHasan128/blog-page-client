@@ -1,11 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import DisplayWishListBlogs from "./DisplayWishListBlogs/DisplayWishListBlogs";
+import axios from "axios";
 
 
 const WishList = () => {
 
     const [wishListBlogs, setWishListBlogs] = useState([]);
+    console.log(wishListBlogs);
+    const [blogsRemaining, setBlogsRemaining] = useState(wishListBlogs);
+    console.log(blogsRemaining);
     const {user} = useContext(AuthContext);
 
     useEffect(() =>{
@@ -15,7 +19,12 @@ const WishList = () => {
     },[user?.email])
 
     const handelRemoveWishList = (id) =>{
-        console.log(id);
+        axios.delete(`http://localhost:5000/wishList/${id}`)
+        .then(res => {
+            if(res.data.deletedCount > 0){
+
+            }
+        })
     }
 
     return (
