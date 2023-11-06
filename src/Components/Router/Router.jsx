@@ -5,6 +5,9 @@ import Registar from "../Pages/Authentication/Registar/Register";
 import Home from "../Pages/Home/Home/Home";
 import AddBlog from "../Pages/AddBlog/AddBlog";
 import AllBlogs from "../Pages/AllBlogs/AllBlogs";
+import WishList from "../Pages/WishList/WishList";
+
+
 
 const router = createBrowserRouter([
     {
@@ -32,6 +35,10 @@ const router = createBrowserRouter([
                path: '/allBlogs' ,
                element: <AllBlogs />,
                loader: () => fetch('http://localhost:5000/allBlogs')
+            },
+            {
+                path: '/wishList',
+                element: <WishList />
             }
         ]
     }

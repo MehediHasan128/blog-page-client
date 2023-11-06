@@ -1,29 +1,78 @@
+import axios from "axios";
 import { PropTypes } from "prop-types";
+import { useContext, useState } from "react";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
-const RecentBlogs = ({blog}) => {
+const RecentBlogs = ({ blog }) => {
 
-    const {title, image, category, shortDescription} = blog
+  const {user} = useContext(AuthContext);
+  const userEmail = user?.email;
 
-    return (
-        <div className="w-[70%] h-[550px] shadow-xl mx-auto rounded-md">
-            <div className="w-full h-[50%] overflow-hidden border">
-                <img className="w-full h-full object-cover brightness-50 hover:brightness-90 hover:scale-110 duration-700 rounded-t-md" src={image} alt="" />
-            </div>
-            <div className="h-[50%] px-5 py-5 flex flex-col">
-                <div className="flex-1">
-                    <h1 className="text-xl font-semibold">{title}</h1>
-                    <p className="my-4 bg-slate-600 w-fit px-5 py-1 rounded-full text-white font-medium">{category}</p>
-                    <p className="text-gray-500">{shortDescription.slice(0, 110)}...</p>
-                </div>
+  const { _id, title, image, category, shortDescription, longDescription } = blog;
 
-                <button className="bg-slate-800 py-2 rounded-lg text-white">Details</button>
-            </div>
+  const wishListBlogs = {title, image, category, shortDescription, longDescription, userEmail, blogId: _id};
+
+  const [like, setLike] = useState(false);
+
+  
+  const handelAddToWishList = () => {
+    axios.post('http://localhost:5000/addWishList', wishListBlogs)
+    .then(res => {
+      if(res.data.acknowledged){
+        Swal.fire({
+          icon: "success",
+          title: "Added Wishlist",
+          showConfirmButton: false,
+          timer: 1000
+        });
+      }
+    })
+    .catch(err =>{
+      console.log(err);
+    })
+  };
+
+  return (
+    <div className="card bg-base-100 shadow-xl">
+      <figure>
+        <img src={image} alt="Shoes" />
+      </figure>
+      {like ? (
+        <AiFillHeart
+          onClick={() => {
+            setLike(!like);
+          }}
+          className="absolute top-4 right-5 text-2xl text-red-600 cursor-pointer"
+        />
+      ) : (
+        <AiOutlineHeart
+          onClick={() => {
+            setLike(!like);
+            handelAddToWishList();
+          }}
+          className="absolute top-4 right-5 text-2xl text-red-600 cursor-pointer"
+        />
+      )}
+      <div className="card-body">
+        <h2 className="card-title">{title}</h2>
+        <div className="bg-slate-600 w-fit px-3 text-white my-3 font-medium rounded-full">
+          <p>{category}</p>
         </div>
-    );
+        <p>{shortDescription}</p>
+        <div className="card-actions">
+          <button className="bg-slate-700 w-full py-2 rounded-lg text-white">
+            Details
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 RecentBlogs.propTypes = {
-    blog: PropTypes.object
-}
+  blog: PropTypes.object,
+};
 
 export default RecentBlogs;
