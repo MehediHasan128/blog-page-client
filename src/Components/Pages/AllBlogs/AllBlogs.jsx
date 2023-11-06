@@ -3,7 +3,6 @@ import DisplayAllBlogs from "./DisplayAllBlogs/DisplayAllBlogs";
 
 const AllBlogs = () => {
   const blogs = useLoaderData();
-  console.log(blogs);
 
   return (
     <div>

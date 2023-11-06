@@ -6,12 +6,15 @@ import blog from "../../../../assets/blog2.jpg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
     const {loginUser, userWithGoogle} = useContext(AuthContext)
 
   const [showPass, setShowPass] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handelUserLogin = e =>{
     e.preventDefault()
@@ -26,8 +29,9 @@ const Login = () => {
             icon: "success",
             title: "Successfully loggedIn",
             showConfirmButton: false,
-            timer: 1500,
-          });
+            timer: 1000,
+          })
+          navigate(location?.state ? location.state : '/')
         }
       })
       .catch((err) => {
@@ -50,7 +54,8 @@ const Login = () => {
           title: "User Created Successfully",
           showConfirmButton: false,
           timer: 1000,
-        });
+        })
+        navigate(location?.state ? location.state : '/')
       }
     })
     .catch(err =>{

@@ -6,12 +6,15 @@ import blog from "../../../../assets/blog2.jpg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { createUser, userWithGoogle, userName } = useContext(AuthContext);
 
   const [showPass, setShowPass] = useState(false);
-  const [passError, setPassError] = useState('')
+  const [passError, setPassError] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handelRegister = (e) => {
     e.preventDefault();
@@ -41,8 +44,9 @@ const Register = () => {
             icon: "success",
             title: "User created successfully",
             showConfirmButton: false,
-            timer: 1500,
-          });
+            timer: 1000,
+          })
+          navigate(location?.state ? location.state : '/')
         }
       })
       .catch((err) => {
@@ -66,7 +70,8 @@ const Register = () => {
           title: "User Created Successfully",
           showConfirmButton: false,
           timer: 1000,
-        });
+        })
+        navigate(location?.state ? location.state : '/')
       }
     })
     .catch(err =>{
