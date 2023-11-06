@@ -48,7 +48,7 @@ const WishList = () => {
 
     return (
         <div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col lg:flex lg:flex-col md:grid md:grid-cols-2 gap-5 my-20">
                 {
                     allBlogs.map(blog => <DisplayWishListBlogs key={blog._id} blog={blog} handelRemoveWishList={handelRemoveWishList} />)
                 }

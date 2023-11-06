@@ -47,7 +47,7 @@ const AddBlog = () => {
     }
 
     return (
-        <div className="flex justify-center items-center min-h-screen">
+        <div className="flex justify-center items-center min-h-screen my-20 lg:mt-0">
             <div className="w-full">
                 <div className="text-center space-y-5">
                     <h1 className="text-4xl font-semibold">Weclome to Blog Page</h1>

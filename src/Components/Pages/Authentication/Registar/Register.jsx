@@ -1,4 +1,5 @@
 import { HiOutlineMail } from "react-icons/hi";
+import { MdPhotoLibrary } from "react-icons/md";
 import { BiSolidKey, BiSolidUser } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -22,6 +23,7 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const photo = form.photo.value;
     setPassError('');
 
     if(password.length < 6){
@@ -38,7 +40,8 @@ const Register = () => {
       createUser(email, password)
       .then((result) => {
         const user = result.user;
-        userName(user, name);
+        userName(user, name, photo);
+        console.log(user);
         if (result) {
           Swal.fire({
             icon: "success",
@@ -122,6 +125,16 @@ const Register = () => {
                   required
                 />
                 <BiSolidUser className="text-2xl absolute top-3 left-4" />
+              </div>
+              <div className="relative mt-5">
+                <input
+                  className="pl-12 pr-5 py-3 w-full rounded-full border-2"
+                  type="url"
+                  name="photo"
+                  placeholder="Enter your photo url"
+                  required
+                />
+                <MdPhotoLibrary className="text-2xl absolute top-3 left-4" />
               </div>
               <div className="relative my-5">
                 <input

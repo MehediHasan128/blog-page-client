@@ -25,9 +25,10 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const userName = (user, name) =>{
+    const userName = (user, name, photoUrl) =>{
         updateProfile(user, {
-            displayName: name
+            displayName: name,
+            photoURL: photoUrl
         })
     }
 
