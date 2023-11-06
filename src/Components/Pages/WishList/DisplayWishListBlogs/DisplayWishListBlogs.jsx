@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const DisplayWishListBlogs = ({blog, handelRemoveWishList}) => {
 
-    const {_id, title, image, shortDescription, category} = blog;
+    const {_id, title, image, shortDescription, category, blogId} = blog;
 
   return (
     <div className="card card-compact lg:card-side bg-gray-100 shadow-xl w-[80%] lg:w-auto mx-auto">
@@ -21,7 +21,7 @@ const DisplayWishListBlogs = ({blog, handelRemoveWishList}) => {
         <p>{shortDescription}</p>
         <div className="card-actions justify-between">
             <p className="px-5 py-2 bg-slate-700 max-w-fit text-white rounded-full">{category}</p>
-          <Link className="px-5 py-2 bg-slate-700 rounded-lg text-white font-semibold">
+          <Link to={`/blogs/${blogId}`} className="px-5 py-2 bg-slate-700 rounded-lg text-white font-semibold">
           <button>Details</button>
           </Link>
         </div>
