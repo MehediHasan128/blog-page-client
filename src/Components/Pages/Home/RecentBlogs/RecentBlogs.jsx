@@ -5,6 +5,8 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import 'react-photo-view/dist/react-photo-view.css';
 
 const RecentBlogs = ({ blog }) => {
 
@@ -38,7 +40,11 @@ const RecentBlogs = ({ blog }) => {
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
-        <img className="brightness-75" src={image} alt="Shoes" />
+        <PhotoProvider>
+          <PhotoView src={image}>
+          <img className="brightness-75" src={image} alt="Shoes" />
+          </PhotoView>
+        </PhotoProvider>
       </figure>
       {like ? (
         <AiFillHeart
