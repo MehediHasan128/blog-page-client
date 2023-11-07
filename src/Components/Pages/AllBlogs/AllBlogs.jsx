@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import DisplayAllBlogs from "./DisplayAllBlogs/DisplayAllBlogs";
-import { BiSearch } from 'react-icons/bi';
+import { BiSearch, BiFilter } from 'react-icons/bi';
 import axios from "axios";
 import { useState } from "react";
 
@@ -9,7 +9,7 @@ const AllBlogs = () => {
 
   const [searchBlog, setSearchBlog] = useState();
   const [activeSearch, setActiveSearch] = useState(false);
-  console.log(searchBlog);
+  const [activeFilter, setActiveFilter] = useState(false);
 
   const handelSearch = e =>{
     e.preventDefault();
@@ -20,6 +20,13 @@ const AllBlogs = () => {
     .then(res => {
       setSearchBlog([res.data]);
     })
+  }
+
+  const handelFilter = e =>{
+    e.preventDefault();
+    const form = e.target;
+    const filterValue = form.filter.value;
+    
   }
 
   return (
@@ -35,9 +42,22 @@ const AllBlogs = () => {
           </form>
         </div>
         <div>
-          <select className="border pl-5 " name="" id="">
-            <option value="Travel">Travel</option>
+          <form className="flex" onSubmit={handelFilter}>
+          <select className="border px-5 py-3 rounded-md outline-none" name="filter" id="">
+          <option value="">---Seclect Category---</option>
+          <option value="Travel">Travel</option>
+          <option value="Food and Cooking">Food and Cooking</option>
+          <option value="Lifestyle">Lifestyle</option>
+          <option value="Technology">Technology</option>
+          <option value="Health and Wellness">Health and Wellness</option>
+          <option value="Personal Finance">Personal Finance</option>
+          <option value="Parenting">Parenting</option>
+          <option value="DIY and Crafts">DIY and Crafts</option>
+          <option value="Books and Literature">Books and Literature</option>
+          <option value="Environmental and Sustainability">Environmental and Sustainability</option>
           </select>
+          <button className="flex items-center gap-1 text-lg px-5 py-3 bg-slate-700 text-white font-semibold rounded-r-md" type="submit">Filter <BiFilter /></button>
+          </form>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-10 lg:px-20">
