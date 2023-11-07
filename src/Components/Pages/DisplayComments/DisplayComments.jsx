@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 const DisplayComments = ({userComment}) => {
     const {comment,userProfile,userName} = userComment;
     return (
-        <div className="flex items-center gap-3 bg-slate-200 pl-1 pr-5 w-fit py-1 rounded-full">
+        <div className="flex items-center gap-3 bg-white border pl-1 pr-5 w-fit py-1 rounded-full">
           <div className="avatar">
             <div className="w-10 rounded-full">
               <img src={userProfile} />

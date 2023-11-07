@@ -61,11 +61,11 @@ const BlogDetails = () => {
   };
 
   return (
-    <div className="w-[70%] mx-auto">
+    <div className="lg:w-[70%] mx-auto mb-20">
       <div>
-        <img src={image} alt="" />
+        <img className="" src={image} alt="" />
       </div>
-      <div className="flex gap-10 mt-20">
+      <div className="flex flex-col lg:flex-row gap-10 mt-20 px-5">
         <div className="w-[100%] text-center">
           <div className="avatar">
             <div className="w-24 h-24 rounded-full">
@@ -78,8 +78,8 @@ const BlogDetails = () => {
         <div>
           <h1 className="text-4xl font-bold">Title: {title}</h1>
           <p className="my-5 text-2xl font-semibold">Category: {category}</p>
-          <p className="text-xl mb-5">{shortDescription}</p>
-          <p className="text-xl mb-10">{longDescription}</p>
+          <p className="text-xl mb-5 text-justify">{shortDescription}</p>
+          <p className="text-xl mb-10 text-justify">{longDescription}</p>
           {
             (writerEmail === userEmail)?
             <Link to={`/updateBlog/${_id}`} className="px-5 py-3 bg-slate-600 rounded-lg text-white font-semibold">
@@ -90,7 +90,7 @@ const BlogDetails = () => {
         </div>
       </div>
 
-      <div className="mt-20 rounded space-y-3">
+      <div className="mt-20 rounded space-y-3 p-5 bg-slate-100">
         {
             comments.map(userComment => <DisplayComments key={userComment._id} userComment={userComment} />)
         }

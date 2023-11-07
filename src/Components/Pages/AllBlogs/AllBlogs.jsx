@@ -21,6 +21,7 @@ const AllBlogs = () => {
     .then(res => {
       setSearchBlog([res.data]);
     })
+    form.reset();
   }
 
   const handelFilter = e =>{
@@ -61,7 +62,7 @@ const AllBlogs = () => {
           <option value="Books and Literature">Books and Literature</option>
           <option value="Environmental and Sustainability">Environmental and Sustainability</option>
           </select>
-          <button onClick={() => setActiveFilter(!activeFilter)} className="flex items-center gap-1 text-lg px-5 py-3 bg-slate-700 text-white font-semibold rounded-r-md" type="submit">Filter <BiFilter /></button>
+          <button onClick={() => setActiveFilter(true)} className="flex items-center gap-1 text-lg px-5 py-3 bg-slate-700 text-white font-semibold rounded-r-md" type="submit">Filter <BiFilter /></button>
           </form>
         </div>
       </div>

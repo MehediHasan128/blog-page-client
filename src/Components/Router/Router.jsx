@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             {
                 path: '/updateBlog/:id',
                 element: <PrivetRoute><UpdateBlog /></PrivetRoute>,
-                // loader: ({params}) => fetch(`http://localhost:5000/updateBlog/${params.id}`)
+                loader: ({params}) => fetch(`http://localhost:5000/updateBlog/${params.id}`)
             }
         ]
     }
