@@ -7,7 +7,8 @@ import { useState } from "react";
 const AllBlogs = () => {
   const blogs = useLoaderData();
 
-  const [searchBlog, setSearchBlog] = useState();
+  const [searchBlog, setSearchBlog] = useState([]);
+  const [filterBlog, setFilterBlog] = useState()
   const [activeSearch, setActiveSearch] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
 
@@ -16,7 +17,7 @@ const AllBlogs = () => {
     const form = e.target;
     const searchText = form.title.value;
 
-    axios(`http://localhost:5000/allBlogs/${searchText}`)
+    axios(`http://localhost:5000/searchBlog/${searchText}`)
     .then(res => {
       setSearchBlog([res.data]);
     })
@@ -27,6 +28,10 @@ const AllBlogs = () => {
     const form = e.target;
     const filterValue = form.filter.value;
     
+    axios.get(`http://localhost:5000/filterBlogs/${filterValue}`)
+    .then(res => {
+      setFilterBlog(res.data);
+    })
   }
 
   return (
@@ -44,7 +49,7 @@ const AllBlogs = () => {
         <div>
           <form className="flex" onSubmit={handelFilter}>
           <select className="border px-5 py-3 rounded-md outline-none" name="filter" id="">
-          <option value="">---Seclect Category---</option>
+          <option value="">All Category</option>
           <option value="Travel">Travel</option>
           <option value="Food and Cooking">Food and Cooking</option>
           <option value="Lifestyle">Lifestyle</option>
@@ -56,14 +61,18 @@ const AllBlogs = () => {
           <option value="Books and Literature">Books and Literature</option>
           <option value="Environmental and Sustainability">Environmental and Sustainability</option>
           </select>
-          <button className="flex items-center gap-1 text-lg px-5 py-3 bg-slate-700 text-white font-semibold rounded-r-md" type="submit">Filter <BiFilter /></button>
+          <button onClick={() => setActiveFilter(!activeFilter)} className="flex items-center gap-1 text-lg px-5 py-3 bg-slate-700 text-white font-semibold rounded-r-md" type="submit">Filter <BiFilter /></button>
           </form>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-10 lg:px-20">
         {
-            activeSearch ?
-            searchBlog?.map(blog => <DisplayAllBlogs key={blog._id} blog={blog} />) :
+            (activeSearch || activeFilter) ?
+            <>
+              {
+                activeFilter ? filterBlog?.map(blog => <DisplayAllBlogs key={blog._id} blog={blog} />) : searchBlog?.map(blog => <DisplayAllBlogs key={blog._id} blog={blog} />)
+              }
+            </> :
             blogs.map(blog => <DisplayAllBlogs key={blog._id} blog={blog} />)
         }
       </div>
