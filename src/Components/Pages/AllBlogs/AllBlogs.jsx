@@ -17,7 +17,7 @@ const AllBlogs = () => {
     const form = e.target;
     const searchText = form.title.value;
 
-    axios(`http://localhost:5000/searchBlog/${searchText}`)
+    axios(`https://blog-page-server-six.vercel.app/searchBlog/${searchText}`)
     .then(res => {
       setSearchBlog([res.data]);
     })
@@ -29,7 +29,7 @@ const AllBlogs = () => {
     const form = e.target;
     const filterValue = form.filter.value;
     
-    axios.get(`http://localhost:5000/filterBlogs/${filterValue}`)
+    axios.get(`https://blog-page-server-six.vercel.app/filterBlogs/${filterValue}`)
     .then(res => {
       setFilterBlog(res.data);
     })

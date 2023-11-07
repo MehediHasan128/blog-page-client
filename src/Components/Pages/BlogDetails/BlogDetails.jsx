@@ -29,7 +29,7 @@ const BlogDetails = () => {
 
 
   axios
-    .get(`http://localhost:5000/comments/${_id}`)
+    .get(`https://blog-page-server-six.vercel.app/comments/${_id}`)
     .then((res) => {
       setComments(res.data);
     })
@@ -44,7 +44,7 @@ const BlogDetails = () => {
     const userComment = { comment, userProfile, userName, blogId: _id };
 
     axios
-      .post("http://localhost:5000/comments", userComment)
+      .post("https://blog-page-server-six.vercel.app/comments", userComment)
       .then((res) => {
         if (res.data.acknowledged) {
           Swal.fire({

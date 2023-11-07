@@ -20,7 +20,7 @@ const RecentBlogs = ({ blog }) => {
 
   
   const handelAddToWishList = () => {
-    axios.post('http://localhost:5000/addWishList', wishListBlogs)
+    axios.post('https://blog-page-server-six.vercel.app/addWishList', wishListBlogs)
     .then(res => {
       if(res.data.acknowledged){
         Swal.fire({

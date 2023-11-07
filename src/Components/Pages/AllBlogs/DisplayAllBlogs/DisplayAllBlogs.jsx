@@ -18,7 +18,7 @@ const DisplayAllBlogs = ({blog}) => {
     const wishListBlogs = {title, image, category, shortDescription, longDescription, userEmail, blogId: _id};
 
     const handelAddToWishList = () => {
-      axios.post('http://localhost:5000/addWishList', wishListBlogs)
+      axios.post('https://blog-page-server-six.vercel.app/addWishList', wishListBlogs)
       .then(res => {
         if(res.data.acknowledged){
           Swal.fire({
@@ -39,7 +39,7 @@ const DisplayAllBlogs = ({blog}) => {
       <figure>
         <PhotoProvider>
           <PhotoView src={image}>
-          <img className='cursor-pointer' src={image} alt="Shoes" />
+          <img className='cursor-pointer brightness-75' src={image} alt="Shoes" />
           </PhotoView>
         </PhotoProvider>
       </figure>

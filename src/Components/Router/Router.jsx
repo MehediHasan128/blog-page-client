@@ -10,6 +10,7 @@ import BlogDetails from "../Pages/BlogDetails/BlogDetails";
 import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
 import PrivetRoute from "./PrivetRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import FeaturedBlogs from "../Pages/FeaturedBlogs/FeaturedBlogs";
 
 
 const router = createBrowserRouter([
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />,
-                loader: () => fetch('http://localhost:5000/recentBlogs')
+                loader: () => fetch('https://blog-page-server-six.vercel.app/recentBlogs')
             },
             {
                 path: '/login',
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
             {
                path: '/allBlogs' ,
                element: <AllBlogs />,
-               loader: () => fetch('http://localhost:5000/allBlogs')
+               loader: () => fetch('https://blog-page-server-six.vercel.app/allBlogs')
             },
             {
                 path: '/wishList',
@@ -47,12 +48,17 @@ const router = createBrowserRouter([
             {
                 path: '/blogs/:id',
                 element: <BlogDetails />,
-                loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({params}) => fetch(`https://blog-page-server-six.vercel.app/blogs/${params.id}`)
             },
             {
                 path: '/updateBlog/:id',
                 element: <PrivetRoute><UpdateBlog /></PrivetRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/updateBlog/${params.id}`)
+                loader: ({params}) => fetch(`https://blog-page-server-six.vercel.app/updateBlog/${params.id}`)
+            },
+            {
+                path: '/featuredBlogs',
+                element: <FeaturedBlogs />,
+                loader: () => fetch('https://blog-page-server-six.vercel.app/featured')
             }
         ]
     }

@@ -13,7 +13,7 @@ const WishList = () => {
     const {user} = useContext(AuthContext);
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/wishLists?email=${user?.email}`, {credentials: 'include'})
+        fetch(`https://blog-page-server-six.vercel.app/wishLists?email=${user?.email}`)
         .then(res => res.json())
         .then(data => setWishListBlogs(data))
     },[user?.email])
@@ -29,7 +29,7 @@ const WishList = () => {
             confirmButtonText: "Yes, delete it!",
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/wishList/${id}`)
+                axios.delete(`https://blog-page-server-six.vercel.app/wishList/${id}`)
                 .then(res => {
                     if(res.data.deletedCount > 0){
                         const remainingBlogs = wishListBlogs.filter(blogs => blogs._id !== id);
@@ -47,7 +47,7 @@ const WishList = () => {
     }
 
     return (
-        <div>
+        <div className="min-h-screen">
             <div className="flex flex-col lg:flex lg:flex-col md:grid md:grid-cols-2 gap-5 my-20">
                 {
                     allBlogs.map(blog => <DisplayWishListBlogs key={blog._id} blog={blog} handelRemoveWishList={handelRemoveWishList} />)

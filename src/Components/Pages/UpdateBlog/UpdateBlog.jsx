@@ -18,7 +18,7 @@ const UpdateBlog = () => {
 
         const updateBlog = {updateTitel, updatePhotoUrl, updateCategory, updateShortDescription, updateLongDescription}
 
-        axios.put(`http://localhost:5000/update/${_id}`, updateBlog)
+        axios.put(`https://blog-page-server-six.vercel.app/update/${_id}`, updateBlog)
         .then(res => {
             console.log(res);
             if(res.data.modifiedCount > 0){

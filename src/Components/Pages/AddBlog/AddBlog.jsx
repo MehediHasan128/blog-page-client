@@ -27,7 +27,7 @@ const AddBlog = () => {
         const blog = {title, image, category, shortDescription, longDescription, writerName, writerEmail, writerProfile, time, date}
 
 
-        axios.post('http://localhost:5000/blog', blog)
+        axios.post('https://blog-page-server-six.vercel.app/blog', blog)
         .then(res => {
             if(res.data.acknowledged){
                 Swal.fire({
