@@ -5,6 +5,7 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const DisplayAllBlogs = ({blog}) => {
 
@@ -13,6 +14,7 @@ const DisplayAllBlogs = ({blog}) => {
   const userEmail = user?.email;
 
     const {_id, title, image, category, shortDescription, longDescription} = blog;
+
     const wishListBlogs = {title, image, category, shortDescription, longDescription, userEmail, blogId: _id};
 
     const handelAddToWishList = () => {
@@ -35,7 +37,11 @@ const DisplayAllBlogs = ({blog}) => {
     return (
       <div className="card bg-base-100 shadow-xl">
       <figure>
-        <img src={image} alt="Shoes" />
+        <PhotoProvider>
+          <PhotoView src={image}>
+          <img className='cursor-pointer' src={image} alt="Shoes" />
+          </PhotoView>
+        </PhotoProvider>
       </figure>
       {like ? (
         <AiFillHeart

@@ -9,12 +9,14 @@ import WishList from "../Pages/WishList/WishList";
 import BlogDetails from "../Pages/BlogDetails/BlogDetails";
 import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
 import PrivetRoute from "./PrivetRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',

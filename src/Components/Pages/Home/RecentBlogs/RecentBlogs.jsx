@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import 'react-photo-view/dist/react-photo-view.css';
 
 const RecentBlogs = ({ blog }) => {
 
