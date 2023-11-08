@@ -169,7 +169,7 @@ const Register = () => {
                 )}
               </div>
               <input
-                className="w-full bg-slate-700 py-2 rounded-full text-white text-lg font-bold"
+                className="w-full bg-slate-700 py-2 rounded-full text-white text-lg font-bold cursor-pointer"
                 type="submit"
                 value="Register"
               />

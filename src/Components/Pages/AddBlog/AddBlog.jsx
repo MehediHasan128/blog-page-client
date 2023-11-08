@@ -42,7 +42,7 @@ const AddBlog = () => {
             console.log(err);
         })
 
-        
+        form.reset()
 
     }
 

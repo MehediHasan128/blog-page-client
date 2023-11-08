@@ -77,7 +77,7 @@ const UpdateBlog = () => {
                                 <textarea className="block border-2 rounded-md w-full mt-2 px-5 py-3 overflow-hidden" name="longDescription" id="" cols="30" rows="5" defaultValue={longDescription} placeholder="Write a long description..."></textarea>
                             </div>
                         </div>
-                        <input className="px-5 py-3 bg-slate-700 mt-5 w-36 rounded-md text-white font-semibold cursor-pointer" type="submit" value="Add Blog" />
+                        <input className="px-5 py-3 bg-slate-700 mt-5 w-36 rounded-md text-white font-semibold cursor-pointer" type="submit" value="Update" />
                     </form>
                 </div>
             </div>
