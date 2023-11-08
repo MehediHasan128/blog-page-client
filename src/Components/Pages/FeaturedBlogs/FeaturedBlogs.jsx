@@ -19,7 +19,7 @@ const FeaturedBlogs = () => {
           </thead>
           <tbody>
             {
-                blogs.map((blog, idx) => <DisplayTableBlogs key={blog._id} blog={blog} idx={idx} />)
+                blogs.slice(0, 10).map((blog, idx) => <DisplayTableBlogs key={blog._id} blog={blog} idx={idx} />)
             }
           </tbody>
         </table>
